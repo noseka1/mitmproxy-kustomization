@@ -1,0 +1,44 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: mitmproxy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mitmproxy
+  template:
+    metadata:
+      labels:
+        app: mitmproxy
+    spec:
+      containers:
+      - image: docker.io/mitmproxy/mitmproxy:5.0.1
+        command:
+        - /bin/sh
+        args:
+        - -c
+        - 'ln -s /home/mitmproxy/cert/mitmproxy-ca.pem /home/mitmproxy/mitmproxy-ca.pem &&
+          /usr/bin/mitmdump
+          --set confdir=/home/mitmproxy
+          --set block_global=false
+          --set console_eventlog_verbosity=info
+          --set flow_detail=1
+          --set stream_large_bodies=1
+          --set termlog_verbosity=info'
+        name: mitmproxy
+        ports:
+        - name: proxy
+          containerPort: 8080
+          protocol: TCP
+        volumeMounts:
+        - name: home
+          mountPath: /home/mitmproxy
+        - name: ca-cert
+          mountPath: /home/mitmproxy/cert
+      volumes:
+      - name: home
+        emptyDir: {}
+      - name: ca-cert
+        secret:
+          secretName: mitmproxy-ca-cert
