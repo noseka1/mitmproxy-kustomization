@@ -1,2 +1,1 @@
-# mitmproxy-kustomization
-Kustomization for deploying mitmproxy on OpenShift
+# Kustomization for Deploying mitmproxy on OpenShift
