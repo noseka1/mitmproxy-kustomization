@@ -13,7 +13,7 @@ spec:
         app: mitmproxy
     spec:
       containers:
-      - image: docker.io/mitmproxy/mitmproxy:5.0.1
+      - image: docker.io/mitmproxy/mitmproxy:5.2
         resources:
           limits:
             cpu: '4'
