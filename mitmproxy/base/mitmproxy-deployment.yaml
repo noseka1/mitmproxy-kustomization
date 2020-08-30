@@ -31,6 +31,7 @@ spec:
           --set block_global=false
           --set console_eventlog_verbosity=info
           --set flow_detail=1
+          --set ssl_insecure=true
           --set stream_large_bodies=1
           --set termlog_verbosity=info'
         name: mitmproxy
