@@ -10,4 +10,3 @@ spec:
     targetPort: proxy
   selector:
     app: mitmproxy
-  type: LoadBalancer
