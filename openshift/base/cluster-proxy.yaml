@@ -1,0 +1,9 @@
+apiVersion: config.openshift.io/v1
+kind: Proxy
+metadata:
+  name: cluster
+spec:
+  httpProxy: @@HTTP_PROXY_URL@@
+  httpsProxy: @@HTTPS_PROXY_URL@@
+  trustedCA:
+    name: user-ca-bundle
