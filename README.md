@@ -46,3 +46,9 @@ Use the mitmproxy as the OpenShift cluster-wide proxy:
 ```
 $ oc apply --kustomize openshift/base/
 ```
+
+If the above command fails, apply the kustomization using the command:
+
+```
+$ kustomize build openshift/base/ | oc apply --filename -
+```
