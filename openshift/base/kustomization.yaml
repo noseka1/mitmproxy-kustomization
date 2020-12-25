@@ -4,8 +4,10 @@ kind: Kustomization
 configMapGenerator:
 - files:
   - ca-bundle.crt=conf/mitmproxy-ca-crt.pem
-  name: mitmproxy-ca-cert
+  name: user-ca-bundle
   namespace: openshift-config
+  options:
+    disableNameSuffixHash: true
 
 resources:
 - cluster-proxy.yaml
